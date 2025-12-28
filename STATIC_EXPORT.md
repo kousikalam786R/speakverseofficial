@@ -44,7 +44,12 @@ You can deploy the `out/` folder to:
 
 ### 3. **AWS S3 + CloudFront**
    - Upload the `out/` folder contents to an S3 bucket
+   - **Important for CSS**: Make sure your S3 bucket is configured for static website hosting
+   - **MIME Types**: Ensure CSS files have the correct content-type (`text/css`)
+     - When uploading via AWS CLI: `aws s3 sync out/ s3://your-bucket-name --content-type "text/css" --exclude "*" --include "*.css"`
+     - Or set default metadata in S3 bucket properties
    - Configure CloudFront for CDN
+   - Make sure all files in the `_next/static/` folder are publicly readable
 
 ### 4. **Any Static Hosting**
    - Upload the contents of the `out/` folder to any web server
@@ -95,4 +100,12 @@ If you encounter issues:
 2. **Check for server-side code**: Make sure all pages use only client-side features (no `getServerSideProps`, API routes, etc.)
 
 3. **Image optimization**: If you see image-related errors, the `unoptimized: true` setting should resolve them.
+
+4. **CSS not loading on S3**: 
+   - **Check S3 bucket configuration**: Ensure "Static website hosting" is enabled
+   - **Fix MIME types**: CSS files must have `text/css` content-type
+     - Use AWS CLI: `aws s3 cp out/_next/static/css/ s3://your-bucket-name/_next/static/css/ --recursive --content-type "text/css"`
+     - Or in S3 Console: Select all CSS files → Actions → Change metadata → Set Content-Type to `text/css`
+   - **Check file permissions**: Ensure CSS files are publicly readable
+   - **Verify paths**: CSS should be at `/_next/static/css/*.css` (absolute paths are correct)
 

@@ -55,7 +55,7 @@ export default function Hero() {
                     <div className="h-full bg-gradient-to-br from-indigo-50 to-blue-50 p-6 flex flex-col items-center justify-center">
                       <div className="mb-6 flex items-center justify-center">
                         <Image 
-                          src="/logo.png" 
+                          src="./logo.png" 
                           alt="SpeakVerse" 
                           width={200} 
                           height={64}

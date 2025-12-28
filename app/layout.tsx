@@ -11,6 +11,13 @@ export const metadata: Metadata = {
   description: 'SpeakVerse helps learners improve fluency through real-time AI conversations, pronunciation feedback, speaking challenges, and guided lessons.',
   keywords: 'English speaking, AI conversation, pronunciation, language learning, speaking practice',
   authors: [{ name: 'SpeakVerse' }],
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any', type: 'image/x-icon' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     title: 'SpeakVerse - Your English Speaking App',
     description: 'Improve your English speaking skills with AI-powered conversations and real-time feedback.',
@@ -34,10 +41,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      </head>
       <body className={inter.className}>
         <Header />
         <main className="min-h-screen">
